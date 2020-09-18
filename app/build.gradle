@@ -1,0 +1,87 @@
+apply plugin: 'com.android.application'
+apply plugin: 'dagger.hilt.android.plugin'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.example.cleanarchitecture"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation "androidx.constraintlayout:constraintlayout:${versions.constrainlayout}"
+    implementation project(path: ':domain')
+    implementation project(path: ':core')
+    implementation project(path: ':data')
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation "com.android.support:multidex:${versions.multidex}"
+
+    implementation "com.google.dagger:hilt-android:${versions.hilt}"
+    annotationProcessor "com.google.dagger:hilt-android-compiler:${versions.hilt}"
+
+
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02"
+    annotationProcessor 'androidx.hilt:hilt-compiler:1.0.0-alpha02'
+
+
+    // Java language implementation
+    implementation "androidx.navigation:navigation-fragment:${versions.nav_version}"
+    implementation "androidx.navigation:navigation-ui:${versions.nav_version}"
+
+    implementation  "androidx.fragment:fragment:${versions.fragment}"
+    //   Retrofit
+    implementation "com.squareup.okhttp3:okhttp:${versions.okhttp}"
+    implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+
+    implementation "com.squareup.retrofit2:converter-gson:${versions.gsonConvertor}"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:${versions.rxJavaRetrofitAdapter}"
+    implementation "com.google.code.gson:gson:${versions.gson}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${versions.ohhttpInterceptor}"
+
+
+    implementation "com.intuit.ssp:ssp-android:${versions.ssp}"
+    implementation "com.intuit.sdp:sdp-android:${versions.sdp}"
+
+//    com.readystatesoftware.chuck:library:1.1.0
+    debugImplementation "com.readystatesoftware.chuck:library:${versions.chuck}"
+    releaseImplementation "com.readystatesoftware.chuck:library-no-op:${versions.chuck}"
+
+
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel:${versions.lifecycle_version}"
+
+    // Annotation processor
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:${versions.lifecycle_version}"
+    // alternately - if using Java8, use the following instead of lifecycle-compiler
+    implementation "androidx.lifecycle:lifecycle-common-java8:${versions.lifecycle_version}"
+
+}

@@ -1,0 +1,8 @@
+include ':core'
+include ':detailsScreen'
+include ':data'
+include ':domain'
+include ':domain'
+include ':data'
+include ':app'
+rootProject.name = "Clean Architecture"

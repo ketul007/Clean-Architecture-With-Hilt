@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation project(path: ':domain')
+
+    implementation "io.reactivex.rxjava3:rxjava:${versions.rxJava}"
+    implementation "io.reactivex.rxjava3:rxandroid:${versions.rxJava}"
+
+
+    implementation "com.google.dagger:hilt-android:${versions.hilt}"
+    annotationProcessor "com.google.dagger:hilt-android-compiler:${versions.hilt}"
+
+
+    implementation "com.squareup.okhttp3:okhttp:${versions.okhttp}"
+    implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${versions.gsonConvertor}"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:${versions.rxJavaRetrofitAdapter}"
+    implementation "com.google.code.gson:gson:${versions.gson}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${versions.ohhttpInterceptor}"
+
+}

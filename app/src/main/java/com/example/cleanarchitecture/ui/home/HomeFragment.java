@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.cleanarchitecture.R;
 import com.example.cleanarchitecture.databinding.FragmentHomeBinding;
-import com.example.cleanarchitecture.viewModels.HomeViewModel;
 import com.example.core.base.BaseBindingFragment;
 import com.example.core.utils.EventObserver;
 

@@ -18,7 +18,6 @@ public abstract class BaseBindingFragment<T extends ViewDataBinding> extends Fra
 
 
     public BaseBindingFragment(int layout){
-        super(layout);
         this.contentView = layout;
     }
 
@@ -31,7 +30,6 @@ public abstract class BaseBindingFragment<T extends ViewDataBinding> extends Fra
 
     protected T binding ;
     protected NavController navController ;
-
 
     @Nullable
     @Override

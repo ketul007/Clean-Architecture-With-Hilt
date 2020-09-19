@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.cleanarchitecture.R;
 import com.example.cleanarchitecture.databinding.FragmentDetailsBinding;
-import com.example.cleanarchitecture.viewModels.HomeViewModel;
+import com.example.cleanarchitecture.ui.home.HomeViewModel;
 import com.example.core.base.BaseBindingFragment;
 import com.example.core.utils.EventObserver;
 
@@ -24,15 +24,18 @@ public class DetailsFragment extends BaseBindingFragment<FragmentDetailsBinding>
 
     @Override
     protected void viewSetup() {
+        binding.tvName.setOnClickListener(view -> {
+            navController.navigate(DetailsFragmentDirections.actionDetailsFragmentToTestFragment("Junky"));
+        });
     }
 
     @Override
     protected void viewModelSetup() {
         viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-        viewModel.getTodo();
-        viewModel.todo.observe(this, todo -> {
-            binding.tvId.setText(todo.getId().toString());
-            binding.tvName.setText(todo.getTitle());
+        viewModel.getPost();
+        viewModel.postMutableLiveData.observe(this, post -> {
+            binding.tvId.setText(post.getId().toString());
+            binding.tvName.setText(post.getTitle());
         });
         viewModel.errorLiveData.observe(this , new EventObserver<>(s -> {
             Toast.makeText(requireContext(), s, Toast.LENGTH_SHORT).show();

@@ -1,5 +1,6 @@
 package com.example.domain.useCases;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
@@ -10,7 +11,7 @@ public abstract class SingleUseCase<T,Params> extends UseCase {
         disposeLast();
         disposable = buildUseCaseSingle(params)
                 .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
                 .doAfterTerminate(singleUseCaseCallback::onFinished)
                 .subscribe(singleUseCaseCallback::onSuccess , singleUseCaseCallback::onError);
         compositeDisposable.add(disposable);

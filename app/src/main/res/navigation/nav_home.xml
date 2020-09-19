@@ -19,5 +19,23 @@
         android:id="@+id/detailsFragment"
         tools:layout="@layout/fragment_details"
         android:name="com.example.cleanarchitecture.ui.details.DetailsFragment"
-        android:label="DetailsFragment"/>
+        android:label="DetailsFragment">
+        <action
+            android:id="@+id/action_detailsFragment_to_testFragment"
+            app:destination="@id/testFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/testFragment"
+        tools:layout="@layout/fragment_test"
+        android:name="com.example.cleanarchitecture.ui.test.TestFragment"
+        android:label="TestFragment">
+        <action
+            android:id="@+id/action_testFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
 </navigation>

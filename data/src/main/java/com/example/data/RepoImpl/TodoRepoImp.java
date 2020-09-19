@@ -1,6 +1,7 @@
 package com.example.data.RepoImpl;
 
 import com.example.data.network.ApiService;
+import com.example.domain.models.Post;
 import com.example.domain.models.Todo;
 import com.example.domain.repo.TodoRepository;
 
@@ -20,5 +21,10 @@ public class TodoRepoImp implements TodoRepository {
     @Override
     public Single<Todo> getTodo(int id) {
         return apiService.getTodo(id);
+    }
+
+    @Override
+    public Single<Post> getPost(int id) {
+        return apiService.getPost(id);
     }
 }
